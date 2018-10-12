@@ -1,0 +1,52 @@
+		快速排序
+				快速排序是对冒泡排序的一种改进，冒泡排序是每次遍历此意每次选出余下数据最大或者最小的一个数，其复杂度为o(n^2),而快排是通过一种分治的办法，通过于一次排序分割成独立的两个部分，即一部分的所有元素比另一部分所有元素都小；然后后再按此方法一次对两个部分进行划分，整个过程可以通过迭代的方法进行，以此达到整个数据变成有序序列。
+		C语言实现：
+			void qsort(int array[],int maxlen,int begin,int end){
+				int i,j;temp
+				if(begin<end){
+					i=begin+1;
+					j=end;
+					while(i<j){
+						if(array[i]>array[begin]){
+							temp=array[i];
+							array[i]=array[begin];
+							array[begin]=temp;
+							j--;
+						}
+						else{
+							i++;
+						}
+					}
+					if(array[i]>=array[begin]){
+						i--;
+					}
+					temp=array[begin];
+					array[begin]=array[i];
+					array[i]=temp;
+					qsort(array,maxlen,begin,i);
+					qsort(array,maxlen,j,end);
+				}
+				return array[];
+			}
+
+
+
+		php实现：
+			pubilc function qsort($arr){
+				if(!is_array($arr))
+				return false;
+				$len=count($arr);
+				if($len<=1)
+				return $arr;
+				$left=$right=array();
+				for($i=1;$i<$len;$i++){
+					if($arr[$i]<$arr[0]){
+						$left[]=$arr[$i];
+					}else{
+						$right[]=$arr[i];
+					}
+				}
+				$left=qsort($left);
+				$right=qsort($right);
+				return array_merge($left,array($arr[0]),$right));
+			}
